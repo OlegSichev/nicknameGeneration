@@ -17,13 +17,7 @@ public class Main {
         Thread palindromeThread = new Thread(() -> {
             for (String text : texts) {
                 if (isPalindrome(text)) {
-                    if (text.length() == 3) {
-                        counter3.incrementAndGet();
-                    } else if (text.length() == 4) {
-                        counter4.incrementAndGet();
-                    } else {
-                        counter5.incrementAndGet();
-                    }
+                    count(text);
                 }
             }
         });
@@ -31,13 +25,7 @@ public class Main {
         Thread sameLetterThread = new Thread(() -> {
             for (String text : texts) {
                 if (isSameLetter(text)) {
-                    if (text.length() == 3) {
-                        counter3.incrementAndGet();
-                    } else if (text.length() == 4) {
-                        counter4.incrementAndGet();
-                    } else {
-                        counter5.incrementAndGet();
-                    }
+                    count(text);
                 }
             }
         });
@@ -45,13 +33,7 @@ public class Main {
         Thread increasingLetterThread = new Thread(() -> {
             for (String text : texts) {
                 if (isIncreasingLetter(text)) {
-                    if (text.length() == 3) {
-                        counter3.incrementAndGet();
-                    } else if (text.length() == 4) {
-                        counter4.incrementAndGet();
-                    } else {
-                        counter5.incrementAndGet();
-                    }
+                    count(text);
                 }
             }
         });
@@ -71,6 +53,16 @@ public class Main {
         System.out.println("Красивых слов с длиной 3: " + counter3.get() + " шт");
         System.out.println("Красивых слов с длиной 4: " + counter4.get() + " шт");
         System.out.println("Красивых слов с длиной 5: " + counter5.get() + " шт");
+    }
+
+    public static void count(String text){
+        if (text.length() == 3) {
+            counter3.incrementAndGet();
+        } else if (text.length() == 4) {
+            counter4.incrementAndGet();
+        } else {
+            counter5.incrementAndGet();
+        }
     }
 
     public static String generateText(String letters, int length) {
